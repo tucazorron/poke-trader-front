@@ -1,13 +1,12 @@
 import "./Trade.css";
 import axios from "axios";
 import Select from "react-select";
-import Button from "../../components/Button.js";
 import { useState, useEffect } from "react";
 
-function Trade() {
+const Trade = () => {
   const [pokemons, setPokemons] = useState([]);
-  const [player1, setPlayer1] = useState(["0", "0", "0", "0", "0", "0"]);
-  const [player2, setPlayer2] = useState(["0", "0", "0", "0", "0", "0"]);
+  const [player1, setPlayer1] = useState([]);
+  const [player2, setPlayer2] = useState([]);
 
   useEffect(() => {
     axios
@@ -24,9 +23,9 @@ function Trade() {
   }, []);
 
   const verifyTrade = () => {
-    axios.post("https://poke-trader-back", {
+    axios.post("https://poke-trader-back.herokuapp.com", {
       player1: player1,
-      player2: player2,
+      player2: player2
     });
   };
 
@@ -55,27 +54,13 @@ function Trade() {
           <td>
             <Select
               options={pokemons}
-              onChange={(e) => selectPokemon(1, 0, e.value)}
+              onChange={(e) => selectPokemon(1, 0, e)}
             />
           </td>
           <td>
             <Select
               options={pokemons}
-              onChange={(e) => selectPokemon(2, 0, e.value)}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <Select
-              options={pokemons}
-              onChange={(e) => selectPokemon(1, 1, e.value)}
-            />
-          </td>
-          <td>
-            <Select
-              options={pokemons}
-              onChange={(e) => selectPokemon(2, 1, e.value)}
+              onChange={(e) => selectPokemon(2, 0, e)}
             />
           </td>
         </tr>
@@ -83,27 +68,13 @@ function Trade() {
           <td>
             <Select
               options={pokemons}
-              onChange={(e) => selectPokemon(1, 2, e.value)}
+              onChange={(e) => selectPokemon(1, 1, e)}
             />
           </td>
           <td>
             <Select
               options={pokemons}
-              onChange={(e) => selectPokemon(2, 2, e.value)}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <Select
-              options={pokemons}
-              onChange={(e) => selectPokemon(1, 3, e.value)}
-            />
-          </td>
-          <td>
-            <Select
-              options={pokemons}
-              onChange={(e) => selectPokemon(2, 3, e.value)}
+              onChange={(e) => selectPokemon(2, 1, e)}
             />
           </td>
         </tr>
@@ -111,13 +82,13 @@ function Trade() {
           <td>
             <Select
               options={pokemons}
-              onChange={(e) => selectPokemon(1, 4, e.value)}
+              onChange={(e) => selectPokemon(1, 2, e)}
             />
           </td>
           <td>
             <Select
               options={pokemons}
-              onChange={(e) => selectPokemon(2, 4, e.value)}
+              onChange={(e) => selectPokemon(2, 2, e)}
             />
           </td>
         </tr>
@@ -125,18 +96,46 @@ function Trade() {
           <td>
             <Select
               options={pokemons}
-              onChange={(e) => selectPokemon(1, 5, e.value)}
+              onChange={(e) => selectPokemon(1, 3, e)}
             />
           </td>
           <td>
             <Select
               options={pokemons}
-              onChange={(e) => selectPokemon(2, 5, e.value)}
+              onChange={(e) => selectPokemon(2, 3, e)}
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Select
+              options={pokemons}
+              onChange={(e) => selectPokemon(1, 4, e)}
+            />
+          </td>
+          <td>
+            <Select
+              options={pokemons}
+              onChange={(e) => selectPokemon(2, 4, e)}
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Select
+              options={pokemons}
+              onChange={(e) => selectPokemon(1, 5, e)}
+            />
+          </td>
+          <td>
+            <Select
+              options={pokemons}
+              onChange={(e) => selectPokemon(2, 5, e)}
             />
           </td>
         </tr>
       </table>
-      <button onClick={() => verifyTrade()}></button>
+      <button onClick={() => verifyTrade()}>Trade</button>
     </div>
   );
 }
