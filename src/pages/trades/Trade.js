@@ -3,6 +3,8 @@ import axios from "axios";
 import Select from "react-select";
 import { useState, useEffect } from "react";
 
+const backend = "https://poke-trader-back.herokuapp.com"
+
 const Trade = () => {
   const [pokemons, setPokemons] = useState([]);
   const [player1, setPlayer1] = useState([]);
@@ -23,10 +25,11 @@ const Trade = () => {
   }, []);
 
   const verifyTrade = () => {
-    axios.post("https://poke-trader-back.herokuapp.com", {
+    axios.post(backend, {
       player1: player1,
-      player2: player2
+      player2: player2,
     });
+    axios.get(backend + "").then()
   };
 
   const selectPokemon = (player, position, pokemon) => {
@@ -138,6 +141,6 @@ const Trade = () => {
       <button onClick={() => verifyTrade()}>Trade</button>
     </div>
   );
-}
+};
 
 export default Trade;
