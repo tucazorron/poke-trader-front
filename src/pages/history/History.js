@@ -4,11 +4,13 @@ import '../css/History.js';
 
 const History = () => {
 
+  const backend = "http://localhost:3000/"
+
   const [trades, setTrades] = useState([])
 
   useEffect(() => {
     axios
-      .get("https://poke-trader-back.herokuapp.com/history")
+      .get(backend + "trades")
       .then((res) => {
         console.log(res);
       })
@@ -17,7 +19,5 @@ const History = () => {
       });
   }, []);
 
-  return (
-
-  )
+  return ()
 }

@@ -3,7 +3,7 @@ import axios from "axios";
 import Select from "react-select";
 import { useState, useEffect } from "react";
 
-const backend = "https://poke-trader-back.herokuapp.com"
+const backend = "http://localhost:3000/"
 
 const Trade = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -25,20 +25,21 @@ const Trade = () => {
   }, []);
 
   const verifyTrade = () => {
-    axios.post(backend, {
+    axios.post(backend + "trades", {
       player1: player1,
       player2: player2,
     });
-    axios.get(backend + "").then()
+    // axios.get(backend + "trades").then()
   };
 
   const selectPokemon = (player, position, pokemon) => {
+    var aux
     if (player === 1) {
-      var aux = player1;
+      aux = player1;
       aux[position] = pokemon;
       setPlayer1(aux);
     } else {
-      var aux = player2;
+      aux = player2;
       aux[position] = pokemon;
       setPlayer2(aux);
     }
