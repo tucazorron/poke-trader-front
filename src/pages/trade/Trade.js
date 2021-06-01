@@ -8,7 +8,7 @@ const Trade = () => {
   const [player1, setPlayer1] = useState([]);
   const [player2, setPlayer2] = useState([]);
 
-  const backend = "http://localhost:3000/";
+  const backend = "https://poke-trader-back.herokuapp.com/";
 
   useEffect(() => {
     axios

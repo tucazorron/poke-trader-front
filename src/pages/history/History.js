@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const History = () => {
   const [trades, setTrades] = useState([]);
 
-  const backend = "http://localhost:3000/";
+  const backend = "https://poke-trader-back.herokuapp.com/";
 
   useEffect(() => {
     axios
