@@ -45,7 +45,11 @@ const Trade = () => {
         alert(trade);
         window.location.reload(true);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        alert("Erro na requisição!");
+        window.location.reload(true);
+      });
   };
 
   const selectPokemon = (player, position, pokemon) => {
