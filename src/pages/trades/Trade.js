@@ -3,7 +3,7 @@ import axios from "axios";
 import Select from "react-select";
 import { useState, useEffect } from "react";
 
-const backend = "http://localhost:3000/"
+const backend = "http://localhost:3000/";
 
 const Trade = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -25,15 +25,31 @@ const Trade = () => {
   }, []);
 
   const verifyTrade = () => {
-    axios.post(backend + "trades", {
-      player1: player1,
-      player2: player2,
-    });
-    // axios.get(backend + "trades").then()
+    axios
+      .post(backend + "trades", {
+        player1: player1,
+        player2: player2,
+      })
+      .then((res) => {
+        const trade =
+          "Player1: " +
+          res.data.player1 +
+          "\nBase Experience: " +
+          res.data.baseexp1 +
+          "\n\nPlayer2: " +
+          res.data.player2 +
+          "\nBase Experience: " +
+          res.data.baseexp2 +
+          "\n\nIt was a fair trade? " +
+          res.data.fair;
+        alert(trade);
+        window.location.reload(true);
+      })
+      .catch((err) => console.log(err));
   };
 
   const selectPokemon = (player, position, pokemon) => {
-    var aux
+    var aux;
     if (player === 1) {
       aux = player1;
       aux[position] = pokemon;
