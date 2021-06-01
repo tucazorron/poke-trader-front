@@ -1,14 +1,14 @@
 import "./Trade.css";
 import axios from "axios";
 import Select from "react-select";
-import { useState, useEffect } from "react";
-
-const backend = "http://localhost:3000/";
+import { useEffect, useState } from "react";
 
 const Trade = () => {
   const [pokemons, setPokemons] = useState([]);
   const [player1, setPlayer1] = useState([]);
   const [player2, setPlayer2] = useState([]);
+
+  const backend = "http://localhost:3000/";
 
   useEffect(() => {
     axios
@@ -40,7 +40,7 @@ const Trade = () => {
           res.data.player2 +
           "\nBase Experience: " +
           res.data.baseexp2 +
-          "\n\nIt was a fair trade? " +
+          "\n\nWas it a fair trade? " +
           res.data.fair;
         alert(trade);
         window.location.reload(true);
@@ -68,6 +68,7 @@ const Trade = () => {
 
   return (
     <div>
+      <a href="/history">History</a>
       <h1>Poke Trader</h1>
       <table>
         <tr>
