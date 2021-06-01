@@ -11,7 +11,6 @@ const History = () => {
     axios
       .get(backend + "trades")
       .then((res) => {
-        console.log(res);
         setTrades(res.data);
       })
       .catch((err) => {
@@ -38,7 +37,7 @@ const History = () => {
               <td>{element.player2}</td>
               <td>{element.baseexp1}</td>
               <td>{element.baseexp2}</td>
-              <td>{element.fair}</td>
+              <td>{String(element.fair)}</td>
             </tr>
           );
         })}
